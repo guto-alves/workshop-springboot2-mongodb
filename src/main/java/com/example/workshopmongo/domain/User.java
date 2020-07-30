@@ -26,7 +26,8 @@ public class User implements Serializable {
 	}
 	
 	public static User fromDTO(UserDTO userDTO) {
-		return new User(userDTO.getId(), userDTO.getName(), userDTO.getEmail());
+		return new User(userDTO.getId(), userDTO.getName(), 
+				userDTO.getEmail());
 	}
 
 	public String getId() {
