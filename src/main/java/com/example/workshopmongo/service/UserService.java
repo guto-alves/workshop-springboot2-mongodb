@@ -31,7 +31,7 @@ public class UserService {
 		return repository.insert(user);
 	}
 	
-	public void delete(String id) {
+	public void deleteById(String id) {
 		findById(id);
 		repository.deleteById(id);
 	}
