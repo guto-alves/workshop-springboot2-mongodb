@@ -2,9 +2,7 @@ package com.example.workshopmongo.configuration;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
-import java.util.TimeZone;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -38,7 +36,7 @@ public class Instantiation implements CommandLineRunner {
 		userRepository.saveAll(List.of(maria, alex, bob));
 
 		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-		dateFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
+//		dateFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
 
 		Post post1 = new Post(null, dateFormat.parse("21/03/2018"), 
 				"Partiu viagem", "Vou viajar para São Paulo. Abraços!", 

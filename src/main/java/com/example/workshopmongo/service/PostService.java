@@ -1,5 +1,6 @@
 package com.example.workshopmongo.service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,4 +25,17 @@ public class PostService {
 	public List<Post> findByTitle(String text) {
 		return repository.findByTitle(text);
 	}
+
+	public List<Post> findBy(String text, Date min, Date max) {
+		if (min == null) {
+			min = new Date(0L);
+		}
+
+		if (max == null) {
+			max = new Date();
+		}
+		
+		return repository.findBy(text, min, max);
+	}
+
 }

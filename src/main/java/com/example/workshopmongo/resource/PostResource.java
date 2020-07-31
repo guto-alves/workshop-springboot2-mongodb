@@ -1,8 +1,10 @@
 package com.example.workshopmongo.resource;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,5 +32,13 @@ public class PostResource {
 	public ResponseEntity<List<Post>> findByTitle(
 			@RequestParam(name = "title", defaultValue = "") String text) {
 		return ResponseEntity.ok(service.findByTitle(text));
+	}
+	
+	@GetMapping("/fullsearch")
+	public ResponseEntity<List<Post>> findBy(
+			@RequestParam("text") String text,
+			@RequestParam(name = "min", required = false) @DateTimeFormat(pattern = "dd/MM/yyyy") Date min,
+			@RequestParam(name = "max", required = false) @DateTimeFormat(pattern = "dd/MM/yyyy") Date max) {
+		return ResponseEntity.ok(service.findBy(text, min, max));
 	}
 }
