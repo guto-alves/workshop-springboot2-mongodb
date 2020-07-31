@@ -22,12 +22,17 @@ public class PostResource {
 	@Autowired
 	private PostService service;
 
+	@GetMapping
+	public ResponseEntity<List<Post>> findAll() {
+		return ResponseEntity.ok(service.findAll());
+	}
+	
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<Post> findById(@PathVariable String id) {
 		Post post = service.findById(id);
 		return ResponseEntity.ok(post);
 	}
-
+	
 	@GetMapping("/search")
 	public ResponseEntity<List<Post>> findByTitle(
 			@RequestParam(name = "title", defaultValue = "") String text) {
